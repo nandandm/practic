@@ -3,7 +3,7 @@ pipeline{
     stages {
               stage('Checkout') {
             steps {
-                   git branch: 'master', credentialsId: '82aa2d26-ef4b-4a6a-a05f-2e1090b9ce17', url: ''
+                   git branch: 'master', credentialsId: '82aa2d26-ef4b-4a6a-a05f-2e1090b9ce17', url: 'https://github.com/nandandm/gamutkart.git'
                   
                    }
                     
