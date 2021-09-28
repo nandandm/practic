@@ -6,7 +6,8 @@ pipeline{
                        sh 'git clone url'
                      }
                      }
-           stage('BUILD') {
+          
+          stage('BUILD') {
                steps {
                        sh 'mvn clean install' 
                       }
@@ -19,6 +20,9 @@ pipeline{
 
 
 def file = new File('newfile.yml')
- file.readLines().each {
-     line -> println line
+
+
+file.readLines().each {
+
+        line -> println line
 }
