@@ -1,14 +1,16 @@
 pipeline{
     agent any
     stages {
-           stage('clone-Repo') {
-              steps {
-                       sh 'git clone url'
-                     }
-                     }
-          
-          stage('BUILD') {
-               steps {
+              stage('Checkout') {
+            steps {
+                   git branch: 'master', credentialsId: '82aa2d26-ef4b-4a6a-a05f-2e1090b9ce17', url: ''
+                  
+                   }
+                    
+                      }
+                       
+                stage('BUILD') {
+             steps {
                        sh 'mvn clean install' 
                       }
                           }
