@@ -1,0 +1,72 @@
+pipeline {
+ agent any
+     stages{
+          stage('clean') {
+           steps {
+               
+            
+                sh  'rm -rf mvn'
+               
+           }
+           
+       }
+         
+       stage('cloneRepo') {
+           steps {
+               
+            
+                sh  'git clone https://nandandm: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@github.com/nandandm/mvn.git'
+               
+           }
+           
+       }
+           
+           stage('Load'){
+            steps {
+                
+               sh 'cd mvn && groovy ./hello.groovy' 
+            }
+            
+           }
+           
+            stage('addingDictionaryVariable') {
+               steps {
+                   
+                  script {                 
+                        def amap = ['veg' : 
+                                    ['tomato' : 2 ,
+                                     'potato' : 2] ]
+                        
+                        sh 'rm -rf datas.yaml' 
+                        writeYaml file: 'datas.yaml', data: amap
+                        def read = readYaml file: 'datas.yaml'
+                        sh 'cat datas.yaml >> mvn/newfile.yaml'
+                
+                  }   
+               }
+           }   
+                
+            stage('output') {
+              steps {
+                 sh 'cd mvn && groovy ./hello.groovy'  
+              }    
+                
+            } 
+            
+     }
+     
+}
+               
+           
+                
+ 
+    
+    
+                   
+                   
+               
+       
+    
+                              
+               
+           
